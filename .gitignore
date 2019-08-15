@@ -14,3 +14,8 @@ node_modules/
 
 .idea/
 *.iml
+*.swo
+*.swp
+*.swa
+Session.vim
+.tern-port
