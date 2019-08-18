@@ -14,7 +14,24 @@ export default class App extends React.Component {
             },
             url: {
                 api: 'https://api.carbonintensity.org.uk/generation',
-            }
+            },
+            colors: [
+                "#b4d422",
+                "#ffdede",
+                "#dee7ff",
+                "#deffe8",
+                "#fffcde",
+                "#e8bfbf",
+                "#dce8bf",
+                "#bfe8d7",
+                "#bfcce8",
+                "#e0bfe8",
+                "#ff8181",
+                "#ffde81",
+                "#acff81",
+                "#81f3ff",
+                "#e081ff",
+            ]
         }
 
         const {mode, url} = this.state
@@ -31,10 +48,11 @@ export default class App extends React.Component {
     render() {
         const data = !!this.state.data && this.state.data
         const names = legend_names(data.generationmix)
+        const colors = this.state.colors
         return (
             <div className="wrap">
                 <h1>UK Energy Mix</h1>
-                {!!names.length && <Legend names={names} />}
+                {!!names.length && <Legend names={names} colors={colors} />}
                 <pre>tmp: {JSON.stringify(data, null, 4)}</pre>
             </div>
         )
