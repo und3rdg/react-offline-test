@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="wrap"
+>
+  <h1>
+    UK Energy Mix
+  </h1>
+  <pre>
+    tmp: 
+    {}
+  </pre>
+</div>
+`;
