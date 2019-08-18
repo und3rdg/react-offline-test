@@ -1,5 +1,7 @@
 import React from 'react';
 import axios from 'axios'
+import {legend_names} from './helpers'
+import {Legend} from './Legend'
 
 export default class App extends React.Component {
     constructor(props){
@@ -28,12 +30,13 @@ export default class App extends React.Component {
     
     render() {
         const data = !!this.state.data && this.state.data
+        const names = legend_names(data.generationmix)
         return (
             <div className="wrap">
                 <h1>UK Energy Mix</h1>
+                {!!names.length && <Legend names={names} />}
                 <pre>tmp: {JSON.stringify(data, null, 4)}</pre>
             </div>
         )
     }
 }
-                // <Legend names={legend_names(this.state.data.generationmix)} />

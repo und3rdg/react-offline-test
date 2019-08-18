@@ -3,5 +3,8 @@ module.exports = {
 }
 
 function legend_names(arr) {
-
+    const names = !!arr
+        ? arr.map(el => el.fuel)
+        : []
+    return names
 }

@@ -9,5 +9,5 @@ describe('legend_names()', ()=> {
             "perc": 2.5
         },
     ])
-    test.skip('should be ok', ()=> expect(legend_names).toBe(["biomass", "coal"]))
+    test('should be ok', ()=> expect(legend_names).toEqual(["biomass", "coal"]))
 })
