@@ -36,3 +36,4 @@ export default class App extends React.Component {
         )
     }
 }
+                // <Legend names={legend_names(this.state.data.generationmix)} />
