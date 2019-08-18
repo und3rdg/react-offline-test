@@ -51,12 +51,22 @@ export default class App extends React.Component {
         const names = fuel_names(data.generationmix)
         const perc = fuel_perc(data.generationmix)
         const colors = this.state.colors
+
+        const style = {
+            wrap: {
+            display: "grid",
+            gridTemplateColumns: "200px 200px",
+                gridGap: "10px",
+            },
+            title: {
+                gridColumn: "1 / 3",
+            }
+        } 
         return (
-            <div className="wrap">
-                <h1>UK Energy Mix</h1>
+            <div style={style.wrap}>
+                <h1 style={style.title}>UK Energy Mix</h1>
                 {!!names.length && <Legend  names={names} colors={colors} />}
                 {!!names.length && <Pie_chart perc={perc} colors={colors} />}
-                <pre>tmp: {JSON.stringify(data, null, 4)}</pre>
             </div>
         )
     }
