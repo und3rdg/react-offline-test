@@ -1,7 +1,7 @@
 const helpers = require("./helpers.js")
 
-describe('legend_names()', ()=> {
-    const legend_names = helpers.legend_names([
+describe('fuel_names()', ()=> {
+    const fuel_names = helpers.fuel_names([
         { "fuel": "biomass",
             "perc": 4.8
         }, {
@@ -9,5 +9,14 @@ describe('legend_names()', ()=> {
             "perc": 2.5
         },
     ])
-    test('should be ok', ()=> expect(legend_names).toEqual(["biomass", "coal"]))
+    test('should be ok', ()=> expect(fuel_names).toEqual(["biomass", "coal"]))
+})
+
+
+describe('fuel_color()', ()=> {
+    const fuel_color = helpers.fuel_color({
+        colors: ["#c11", "#c22"],
+        idx: 1,
+    })
+    test('should be ok', ()=> expect(fuel_color).toBe("#c22") )
 })

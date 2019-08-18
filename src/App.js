@@ -1,7 +1,8 @@
 import React from 'react';
 import axios from 'axios'
-import {legend_names} from './helpers'
+import {fuel_names, fuel_perc} from './helpers'
 import {Legend} from './Legend'
+import Pie_chart from './Pie_chart'
 
 export default class App extends React.Component {
     constructor(props){
@@ -16,12 +17,6 @@ export default class App extends React.Component {
                 api: 'https://api.carbonintensity.org.uk/generation',
             },
             colors: [
-                "#b4d422",
-                "#ffdede",
-                "#dee7ff",
-                "#deffe8",
-                "#fffcde",
-                "#e8bfbf",
                 "#dce8bf",
                 "#bfe8d7",
                 "#bfcce8",
@@ -31,6 +26,12 @@ export default class App extends React.Component {
                 "#acff81",
                 "#81f3ff",
                 "#e081ff",
+                "#ffdede",
+                "#b4d422",
+                "#dee7ff",
+                "#deffe8",
+                "#fffcde",
+                "#e8bfbf",
             ]
         }
 
@@ -47,12 +48,14 @@ export default class App extends React.Component {
     
     render() {
         const data = !!this.state.data && this.state.data
-        const names = legend_names(data.generationmix)
+        const names = fuel_names(data.generationmix)
+        const perc = fuel_perc(data.generationmix)
         const colors = this.state.colors
         return (
             <div className="wrap">
                 <h1>UK Energy Mix</h1>
-                {!!names.length && <Legend names={names} colors={colors} />}
+                {!!names.length && <Legend  names={names} colors={colors} />}
+                {!!names.length && <Pie_chart perc={perc} colors={colors} />}
                 <pre>tmp: {JSON.stringify(data, null, 4)}</pre>
             </div>
         )
