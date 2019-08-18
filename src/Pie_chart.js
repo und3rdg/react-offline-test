@@ -5,20 +5,23 @@ import {fuel_color} from './helpers'
 
 export default class Pie_chart extends React.Component {
     componentDidMount() {
+        // I like to get invalid cases out of the way first
         if(!!this.props.test) { return }
+
+        // Whole component have not much to do with react life cycle
         let canvas = ReactDOM.findDOMNode(this.refs.canvas)
+        // canvas works only in real DOM :(
         let ctx = canvas.getContext('2d')
 
         const c = {
             x: 75,
             y: 75,
             radius: 70,
-            start: 0,
-            len: 0,
+            start: 0, // mutation
+            len: 0, // mutation
         }
         const txt = []
 
-        const draw_pie = this.draw_pie
         this.props.perc.forEach((fuel_perc, idx) => {
             c.len = 2 * Math.PI * fuel_perc / 100
 
@@ -26,7 +29,13 @@ export default class Pie_chart extends React.Component {
             ctx.beginPath()
             ctx.fillStyle = fuel_color({ colors: this.props.colors, idx: idx, })
             ctx.moveTo(c.x, c.y)
-            ctx.arc(c.x, c.y, c.radius, c.start, c.start + c.len)
+            ctx.arc(
+                c.x,
+                c.y,
+                c.radius,
+                c.start,
+                c.start + c.len
+            )
             ctx.lineTo(c.x, c.y)
             ctx.stroke()
             ctx.fill()

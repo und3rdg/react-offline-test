@@ -22,3 +22,13 @@ function fuel_perc(arr) {
         : []
     return perc
 }
+
+// Probably I should introduce here some oop, mabe something like:
+// function fuel({arr, idx}) {
+//     return {
+//         names: fuel_names(arr),
+//         color: !!idx && fuel_color({colors: arr, idx: idx}),
+//         perc: fuel_perc(arr),
+//     }
+// }
+// But is is already overkill for this small app.
